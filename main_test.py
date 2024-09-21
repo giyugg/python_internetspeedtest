@@ -23,9 +23,9 @@ def test_speed():
     download_speed_value = download_speed / 1_000_000
     upload_speed_value = upload_speed / 1_000_000
 
-    (f"Ping: {ping} ms")
-    (f"Download Speed: {download_speed_value:.2f} mbps")
-    (f"Upload Speed: {upload_speed_value:.2f} mbps")
+    print(f"Ping: {ping} ms")
+    print(f"Download Speed: {download_speed_value:.2f} mbps")
+    print(f"Upload Speed: {upload_speed_value:.2f} mbps")
 
 def main():
     while True:
