@@ -1,4 +1,5 @@
 import speedtest
+import time
 
 def list_servers():
     st = speedtest.Speedtest()
@@ -25,10 +26,21 @@ def test_speed(selected_server=None):
     else:
         # Automatically select the best server
         st.get_best_server()
+    
+        start_time = time.time()
+        print("\nStarting speed test...\n")
+
+        for i in range(1, 6):  # A loop to simulate progress (count from 1 to 5)
+            print(f"Progress: {i}/5 ...")
+            time.sleep(3)  # Simulate the time delay for each step in progress
+
 
     download_speed = st.download()
     upload_speed = st.upload()
     ping = st.results.ping
+
+    end_time = time.time()
+    elapsed_time = end_time - start_time
 
     download_speed_value_kbps = download_speed / 1_000
     upload_speed_value_kbps = upload_speed / 1_000
@@ -36,6 +48,8 @@ def test_speed(selected_server=None):
     upload_speed_value_mbps = upload_speed / 1_000_000
     download_speed_value_gbps = download_speed / 1_000_000_000
     upload_speed_value_gbps = upload_speed / 1_000_000_000
+    # Display time taken to perform the speed test
+    print(f"\nTime taken for the speed test: {elapsed_time:.2f} seconds")
 
     print(f"\nPing: {ping} ms\n")
     print(f"Download Speed in KBPS: {download_speed_value_kbps:,.2f} kbps")
@@ -43,7 +57,7 @@ def test_speed(selected_server=None):
     print(f"Download Speed in MBPS: {download_speed_value_mbps:.2f} mbps")
     print(f"Upload Speed in MBPS: {upload_speed_value_mbps:.2f} mbps\n")
     print(f"Download Speed in GBPS: {download_speed_value_gbps:.2f} gbps")
-    print(f"Upload Speed in GBPS: {upload_speed_value_gbps:.2f} gbps")
+    print(f"Upload Speed in GBPS: {upload_speed_value_gbps:.2f} gbps\n")
 
 def main():
     while True:
