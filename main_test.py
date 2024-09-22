@@ -60,7 +60,6 @@ def main():
             elif server_choice == '2':
                 # List servers and let the user pick one
                 servers = list_servers()  # Ensure this returns the list of servers
-                print(f"DEBUG - Servers retrieved: {servers}")  # Debugging line
                 if servers:  # Check if servers are available
                     selected_index = int(input("\nEnter the server number you want to test: ")) - 1
 
