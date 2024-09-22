@@ -43,11 +43,11 @@ def test_speed(selected_server=None):
     print(f"Download Speed in MBPS: {download_speed_value_mbps:.2f} mbps")
     print(f"Upload Speed in MBPS: {upload_speed_value_mbps:.2f} mbps\n")
     print(f"Download Speed in GBPS: {download_speed_value_gbps:.2f} gbps")
-    print(f"Upload Speed in GBPS: {upload_speed_value_gbps:.2f} gbps\n")
+    print(f"Upload Speed in GBPS: {upload_speed_value_gbps:.2f} gbps")
 
 def main():
     while True:
-        print("\nMenu:")
+        print("Menu:")
         print("1. Check available servers")
         print("2. Test internet speed")
         print("3. Exit")
