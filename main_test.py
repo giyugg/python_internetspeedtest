@@ -17,11 +17,11 @@ def list_servers():
 
 def test_speed(selected_server=None):
     st = speedtest.Speedtest()
-    
+
     if selected_server:
-        # If a server is manually selected, set it
-        st.get_servers([selected_server['id']])
-        st.set_best_server([selected_server])
+        # Manually select the server
+        st.get_servers([selected_server['id']])  # Provide the server ID to filterAttributeError 
+        st.get_best_server([selected_server])    # Select the best server from the filtered list
     else:
         # Automatically select the best server
         st.get_best_server()
