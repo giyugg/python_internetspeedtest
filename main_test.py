@@ -1,6 +1,7 @@
 import os
 import speedtest
 import time
+from enhancements import save_test_results_with_time  # Import the enhanced function
 
 def list_servers():
     st = speedtest.Speedtest()
@@ -93,7 +94,7 @@ def test_speed(selected_server=None):
         filename = input("Enter the filename (e.g., speed_test_results.txt): ")
 
         # Save the results to the specified file
-        save_to_file(directory, filename, result_content)
+        save_test_results_with_time(directory, filename, result_content)
 
 def main():
     while True:
