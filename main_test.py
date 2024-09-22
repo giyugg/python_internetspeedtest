@@ -12,10 +12,20 @@ def list_servers():
         for server in server_list_group:
             server_list.append(server)
             print(f"{len(server_list)}: {server['host']} - {server['country']} ({server['name']})")
+    
+    return server_list  # Return the list of servers
 
-def test_speed():
+def test_speed(selected_server=None):
     st = speedtest.Speedtest()
-    st.get_best_server()
+    
+    if selected_server:
+        # If a server is manually selected, set it
+        st.get_servers([selected_server['id']])
+        st.set_best_server([selected_server])
+    else:
+        # Automatically select the best server
+        st.get_best_server()
+
     download_speed = st.download()
     upload_speed = st.upload()
     ping = st.results.ping
