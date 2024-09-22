@@ -22,6 +22,10 @@ def save_to_file(directory, filename, content):
     if not os.path.exists(directory):
         os.makedirs(directory)
 
+    # Append '.txt' extension if not provided
+    if not filename.endswith(".txt"):
+        filename += ".txt"
+
     # Create the full path for the file
     file_path = os.path.join(directory, filename)
 
