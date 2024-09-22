@@ -1,3 +1,4 @@
+import os
 import speedtest
 import time
 
@@ -15,6 +16,20 @@ def list_servers():
             print(f"{len(server_list)}: {server['host']} - {server['country']} ({server['name']})")
     
     return server_list  # Return the list of servers
+
+def save_to_file(directory, filename, content):
+    # Ensure the directory exists, create if not
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
+    # Create the full path for the file
+    file_path = os.path.join(directory, filename)
+
+    # Write the content to the file
+    with open(file_path, 'w') as f:
+        f.write(content)
+    
+    print(f"\nResults saved to {file_path}\n")
 
 def test_speed(selected_server=None):
     st = speedtest.Speedtest()
@@ -53,15 +68,28 @@ def test_speed(selected_server=None):
     upload_speed_value_gbps = upload_speed / 1_000_000_000
 
     # Display time taken to perform the speed test
-    print(f"\nTime taken for the speed test: {elapsed_time:.2f} seconds")
+    result_content = (
+        f"Time taken for the speed test: {elapsed_time:.2f} seconds\n\n"
+        f"Ping: {ping} ms\n\n"
+        f"Download Speed in KBPS: {download_speed_value_kbps:,.2f} kbps\n"
+        f"Upload Speed in KBPS: {upload_speed_value_kbps:,.2f} kbps\n\n"
+        f"Download Speed in MBPS: {download_speed_value_mbps:.2f} mbps\n"
+        f"Upload Speed in MBPS: {upload_speed_value_mbps:.2f} mbps\n\n"
+        f"Download Speed in GBPS: {download_speed_value_gbps:.2f} gbps\n"
+        f"Upload Speed in GBPS: {upload_speed_value_gbps:.2f} gbps\n"
+    )
 
-    print(f"\nPing: {ping} ms\n")
-    print(f"Download Speed in KBPS: {download_speed_value_kbps:,.2f} kbps")
-    print(f"Upload Speed in KBPS: {upload_speed_value_kbps:,.2f} kbps\n")
-    print(f"Download Speed in MBPS: {download_speed_value_mbps:.2f} mbps")
-    print(f"Upload Speed in MBPS: {upload_speed_value_mbps:.2f} mbps\n")
-    print(f"Download Speed in GBPS: {download_speed_value_gbps:.2f} gbps")
-    print(f"Upload Speed in GBPS: {upload_speed_value_gbps:.2f} gbps\n")
+    print(result_content)
+
+    # Ask the user if they want to save the results to a file
+    save_option = input("Do you want to save the results to a file? (y/n): ").lower()
+
+    if save_option == 'y':
+        directory = input("Enter the directory to save the file (e.g., /path/to/directory): ")
+        filename = input("Enter the filename (e.g., speed_test_results.txt): ")
+
+        # Save the results to the specified file
+        save_to_file(directory, filename, result_content)
 
 def main():
     while True:
