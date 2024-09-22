@@ -77,10 +77,10 @@ def test_speed(selected_server=None):
         f"Ping: {ping} ms\n\n"
         f"Download Speed in KBPS: {download_speed_value_kbps:,.2f} kbps\n"
         f"Upload Speed in KBPS: {upload_speed_value_kbps:,.2f} kbps\n\n"
-        f"Download Speed in MBPS: {download_speed_value_mbps:.2f} mbps\n"
-        f"Upload Speed in MBPS: {upload_speed_value_mbps:.2f} mbps\n\n"
-        f"Download Speed in GBPS: {download_speed_value_gbps:.2f} gbps\n"
-        f"Upload Speed in GBPS: {upload_speed_value_gbps:.2f} gbps\n"
+        f"Download Speed in MBPS: {download_speed_value_mbps:,.2f} mbps\n"
+        f"Upload Speed in MBPS: {upload_speed_value_mbps:,.2f} mbps\n\n"
+        f"Download Speed in GBPS: {download_speed_value_gbps:,.2f} gbps\n"
+        f"Upload Speed in GBPS: {upload_speed_value_gbps:,.2f} gbps\n"
     )
 
     print(result_content)
