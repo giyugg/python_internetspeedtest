@@ -30,12 +30,20 @@ def test_speed(selected_server=None):
     upload_speed = st.upload()
     ping = st.results.ping
 
-    download_speed_value = download_speed / 1_000_000
-    upload_speed_value = upload_speed / 1_000_000
+    download_speed_value_kbps = download_speed / 1_000
+    upload_speed_value_kbps = upload_speed / 1_000
+    download_speed_value_mbps = download_speed / 1_000_000
+    upload_speed_value_mbps = upload_speed / 1_000_000
+    download_speed_value_gbps = download_speed / 1_000_000_000
+    upload_speed_value_gbps = upload_speed / 1_000_000_000
 
-    print(f"Ping: {ping} ms")
-    print(f"Download Speed: {download_speed_value:.2f} mbps")
-    print(f"Upload Speed: {upload_speed_value:.2f} mbps")
+    print(f"\nPing: {ping} ms\n")
+    print(f"Download Speed in KBPS: {download_speed_value_kbps:.2f} kbps")
+    print(f"Upload Speed in KBPS: {upload_speed_value_kbps:.2f} kbps\n")
+    print(f"Download Speed in MBPS: {download_speed_value_mbps:.2f} mbps")
+    print(f"Upload Speed in MBPS: {upload_speed_value_mbps:.2f} mbps\n")
+    print(f"Download Speed in GBPS: {download_speed_value_gbps:.2f} gbps")
+    print(f"Upload Speed in GBPS: {upload_speed_value_gbps:.2f} gbps\n")
 
 def main():
     while True:
