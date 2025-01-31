@@ -3,7 +3,7 @@ import speedtest
 import time
 
 def list_servers():
-    st = speedtest.Speedtest()
+    st = speedtest.Speedtest(secure=True)
     servers_dict = st.get_servers()  # Retrieves a dictionary of available servers
     server_list = []
 
@@ -36,7 +36,7 @@ def save_to_file(directory, filename, content):
     print(f"\nResults saved to {file_path}\n")
 
 def test_speed(selected_server=None):
-    st = speedtest.Speedtest()
+    st = speedtest.Speedtest(secure=True)
 
     # Start timer (initialize start_time for both automatic and manual selection)
     start_time = time.time()
